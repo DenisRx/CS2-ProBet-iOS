@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct MemorizeApp: App {
-    
-    @StateObject var viewModel = HomeViewModel()
-    
+
     var body: some Scene {
         WindowGroup {
-            HomeView(viewModel: viewModel)
+            ContentView()
         }
     }
 }

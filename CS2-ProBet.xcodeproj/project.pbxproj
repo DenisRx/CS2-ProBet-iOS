@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		755C42732B31013E00AA8B36 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C42722B31013E00AA8B36 /* AboutView.swift */; };
+		755C42752B3108F400AA8B36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C42742B3108F400AA8B36 /* ContentView.swift */; };
 		75BA92562B23D8D5008AC3DB /* CS2-ProBetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA92552B23D8D5008AC3DB /* CS2-ProBetApp.swift */; };
 		75BA92582B23DBAE008AC3DB /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA92572B23DBAE008AC3DB /* LeaderboardView.swift */; };
 		75F26EAD2B23D170001A4DD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F26EAC2B23D170001A4DD4 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		755C42722B31013E00AA8B36 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		755C42742B3108F400AA8B36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		75BA92552B23D8D5008AC3DB /* CS2-ProBetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CS2-ProBetApp.swift"; sourceTree = "<group>"; };
 		75BA92572B23DBAE008AC3DB /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		75F26EA52B23D16F001A4DD4 /* CS2-ProBet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS2-ProBet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,7 @@
 				75F26EAC2B23D170001A4DD4 /* Assets.xcassets */,
 				75F26EAE2B23D170001A4DD4 /* Preview Content */,
 				75BA92552B23D8D5008AC3DB /* CS2-ProBetApp.swift */,
+				755C42742B3108F400AA8B36 /* ContentView.swift */,
 			);
 			path = "CS2-ProBet";
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				75BA92582B23DBAE008AC3DB /* LeaderboardView.swift in Sources */,
 				75BA92562B23D8D5008AC3DB /* CS2-ProBetApp.swift in Sources */,
+				755C42752B3108F400AA8B36 /* ContentView.swift in Sources */,
 				75F26EBB2B23D384001A4DD4 /* Team.swift in Sources */,
 				75F26EC12B23D425001A4DD4 /* HomeViewModel.swift in Sources */,
 				755C42732B31013E00AA8B36 /* AboutView.swift in Sources */,
