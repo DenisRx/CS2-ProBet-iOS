@@ -9,15 +9,7 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     
-    func toggleSelectedTeam(_ team: Team) {
-        if let index = leaderboard.firstIndex(of: team) {
-            print("\(team.name) is " + (team.isSelected == true ? "selected." : "not selected."))
-            leaderboard[index].isSelected.toggle()
-            print("\(team.name) is " + (team.isSelected == true ? "selected." : "not selected."))
-        }
-    }
-
-    var leaderboard: [Team] = [
+    @Published var leaderboard: [Team] = [
         Team(points: 985, place: 1, name: "FaZe", id: 6667, change: 0, isNew: false, isSelected: true),
         Team(points: 776, place: 2, name: "Vitality", id: 9565, change: 0, isNew: false, isSelected: false),
         Team(points: 600, place: 3, name: "MOUZ", id: 4494, change: 0, isNew: false, isSelected: false),
@@ -49,4 +41,10 @@ class HomeViewModel: ObservableObject {
         Team(points: 50, place: 29, name: "3DMAX", id: 4914, change: -1, isNew: false, isSelected: false),
         Team(points: 49, place: 30, name: "TYLOO", id: 4863, change: -1, isNew: false, isSelected: false),
     ]
+        
+    func toggleSelectedTeam(_ team: Team) {
+        if let index = leaderboard.firstIndex(of: team) {
+            leaderboard[index].isSelected.toggle()
+        }
+    }
 }

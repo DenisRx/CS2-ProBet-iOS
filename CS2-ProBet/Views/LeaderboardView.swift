@@ -17,7 +17,7 @@ struct LeaderboardView: View {
                     Text("#\(team.place)")
                 }
                 VStack(alignment: .trailing) {
-                    Text(formatRankChange(team.change)).foregroundColor(determineColor(team.change))
+                    Text(formatRankChange(team.change)).foregroundColor(determineRankChangeColor(team.change))
                 }
                 VStack {
                     Text(team.name)
@@ -43,7 +43,7 @@ func formatRankChange(_ value: Int) -> String {
     }
 }
 
-func determineColor(_ value: Int) -> Color {
+func determineRankChangeColor(_ value: Int) -> Color {
     if value > 0 {
         return .green
     } else if value < 0 {
