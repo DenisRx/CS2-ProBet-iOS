@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    
+    @Published var score = 0
     
     @Published var leaderboard: [Team] = [
         Team(points: 985, place: 1, name: "FaZe", id: 6667, change: 0, isNew: false, isSelected: true),
@@ -41,6 +44,10 @@ class HomeViewModel: ObservableObject {
         Team(points: 50, place: 29, name: "3DMAX", id: 4914, change: -1, isNew: false, isSelected: false),
         Team(points: 49, place: 30, name: "TYLOO", id: 4863, change: -1, isNew: false, isSelected: false),
     ]
+    
+    let orange = Color(red: 246/255, green: 87/255, blue: 16/255)
+    
+    let blue = Color(red: 20/255, green: 122/255, blue: 155/255)
         
     func toggleSelectedTeam(_ team: Team) {
         if let index = leaderboard.firstIndex(of: team) {

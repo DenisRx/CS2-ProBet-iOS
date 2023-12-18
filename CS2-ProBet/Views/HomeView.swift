@@ -11,7 +11,14 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
-        LeaderboardView(viewModel: HomeViewModel())
+        VStack {
+            Text("Score: \(viewModel.score)")
+                .padding()
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(viewModel.orange)
+            LeaderboardView(viewModel: HomeViewModel())
+        }.background(viewModel.blue)
     }
 }
 
