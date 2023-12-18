@@ -16,9 +16,9 @@ struct HomeView: View {
                 .padding()
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(viewModel.orange)
+                .foregroundColor(Color("TitleColor"))
             LeaderboardView(viewModel: HomeViewModel())
-        }.background(viewModel.blue)
+        }.background(Color("Background"))
     }
 }
 
