@@ -31,7 +31,7 @@ struct LeaderboardView: View {
                         viewModel.toggleSelectedTeam(team)
                     }
             }.font(.title3)
-        }
+        }.scrollContentBackground(.hidden)
     }
 }
 
