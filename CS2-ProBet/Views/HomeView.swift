@@ -17,7 +17,19 @@ struct HomeView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(Color("TitleColor"))
+            
             LeaderboardView(viewModel: HomeViewModel())
+            
+            Spacer(minLength: 32)
+            
+            Button(action: viewModel.edit) {
+                Text("Edit")
+                    .padding()
+                    .padding(.horizontal, 56)
+                    .background(Color("TitleColor"))
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
         }.background(Color("Background"))
     }
 }

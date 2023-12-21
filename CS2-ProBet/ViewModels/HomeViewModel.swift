@@ -59,4 +59,8 @@ class HomeViewModel: ObservableObject {
     private func getSelectedTeams() -> [Team] {
         return leaderboard.filter { $0.isSelected }
     }
+    
+    func edit() {
+        
+    }
 }
