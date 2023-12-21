@@ -44,10 +44,19 @@ class HomeViewModel: ObservableObject {
         Team(points: 50, place: 29, name: "3DMAX", id: 4914, change: -1, isNew: false, isSelected: false),
         Team(points: 49, place: 30, name: "TYLOO", id: 4863, change: -1, isNew: false, isSelected: false),
     ]
+    
+    let maxTeamSelection = 3
         
     func toggleSelectedTeam(_ team: Team) {
         if let index = leaderboard.firstIndex(of: team) {
+            if leaderboard[index].isSelected == false && getSelectedTeams().count == maxTeamSelection {
+                return
+            }
             leaderboard[index].isSelected.toggle()
         }
+    }
+    
+    private func getSelectedTeams() -> [Team] {
+        return leaderboard.filter { $0.isSelected }
     }
 }
