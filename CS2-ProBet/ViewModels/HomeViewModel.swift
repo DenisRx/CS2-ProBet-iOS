@@ -49,10 +49,6 @@ class HomeViewModel: ObservableObject {
     let maxTeamSelection = 3
         
     func toggleSelectedTeam(_ team: Team) {
-        if isEditing == false {
-            return
-        }
-
         if let index = leaderboard.firstIndex(of: team) {
             if leaderboard[index].isSelected == false && getSelectedTeams().count == maxTeamSelection {
                 return

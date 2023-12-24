@@ -25,11 +25,12 @@ struct LeaderboardView: View {
 
                 Spacer()
                 
-                Image(systemName: team.isSelected ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(team.isSelected ? Color(UIColor.systemBlue) : .gray)
-                    .onTapGesture {
-                        viewModel.toggleSelectedTeam(team)
-                    }
+                Button(action: {
+                    viewModel.toggleSelectedTeam(team)
+                }) {
+                    Image(systemName: team.isSelected ? "checkmark.circle.fill" : "circle")
+                        .foregroundColor(team.isSelected ? Color(UIColor.systemBlue) : .gray)
+                }.disabled(!viewModel.isEditing)
             }.font(.title3)
         }.scrollContentBackground(.hidden)
     }
