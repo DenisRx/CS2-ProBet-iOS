@@ -16,7 +16,7 @@ struct HomeView: View {
                 .padding()
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(Color("TitleColor"))
+                .foregroundColor(Color("BlazeOrange"))
             
             LeaderboardView(viewModel: viewModel)
             
@@ -27,7 +27,7 @@ struct HomeView: View {
                     Text("Edit")
                         .padding()
                         .padding(.horizontal, 56)
-                        .background(Color("TitleColor"))
+                        .background(Color("BlazeOrange"))
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -43,7 +43,7 @@ struct HomeView: View {
             }
             
             Spacer(minLength: 32)
-        }.background(Color("Background"))
+        }.background(Color("PeacockBlue"))
     }
 }
 
