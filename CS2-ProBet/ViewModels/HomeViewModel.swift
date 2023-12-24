@@ -11,6 +11,7 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     
     @Published var score = 0
+    @Published var isEditing: Bool = false
     
     @Published var leaderboard: [Team] = [
         Team(points: 985, place: 1, name: "FaZe", id: 6667, change: 0, isNew: false, isSelected: true),
@@ -48,6 +49,10 @@ class HomeViewModel: ObservableObject {
     let maxTeamSelection = 3
         
     func toggleSelectedTeam(_ team: Team) {
+        if isEditing == false {
+            return
+        }
+
         if let index = leaderboard.firstIndex(of: team) {
             if leaderboard[index].isSelected == false && getSelectedTeams().count == maxTeamSelection {
                 return
@@ -60,7 +65,12 @@ class HomeViewModel: ObservableObject {
         return leaderboard.filter { $0.isSelected }
     }
     
-    func edit() {
-        
+    func editSelection() {
+        isEditing = true
+    }
+    
+    func confirmSelection() {
+        isEditing = false
+        // TODO: Save selection
     }
 }

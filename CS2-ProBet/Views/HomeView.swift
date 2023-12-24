@@ -18,18 +18,31 @@ struct HomeView: View {
                 .fontWeight(.bold)
                 .foregroundColor(Color("TitleColor"))
             
-            LeaderboardView(viewModel: HomeViewModel())
+            LeaderboardView(viewModel: viewModel)
             
             Spacer(minLength: 32)
             
-            Button(action: viewModel.edit) {
-                Text("Edit")
-                    .padding()
-                    .padding(.horizontal, 56)
-                    .background(Color("TitleColor"))
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            if !viewModel.isEditing {
+                Button(action: viewModel.editSelection) {
+                    Text("Edit")
+                        .padding()
+                        .padding(.horizontal, 56)
+                        .background(Color("TitleColor"))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+            } else {
+                Button(action: viewModel.confirmSelection) {
+                    Text("Confirm")
+                        .padding()
+                        .padding(.horizontal, 56)
+                        .background(.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
             }
+            
+            Spacer(minLength: 32)
         }.background(Color("Background"))
     }
 }
