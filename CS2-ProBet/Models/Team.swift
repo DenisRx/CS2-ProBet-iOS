@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Team: Identifiable, Hashable, Equatable {
+struct Team: Identifiable, Hashable, Equatable, Codable {
     var points: Int
     var place: Int
     var name: String
