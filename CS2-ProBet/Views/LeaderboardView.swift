@@ -29,7 +29,7 @@ struct LeaderboardView: View {
                     viewModel.toggleSelectedTeam(team)
                 }) {
                     Image(systemName: team.isSelected ? "checkmark.circle.fill" : "circle")
-                        .foregroundColor(team.isSelected ? Color(UIColor.systemBlue) : .gray)
+                        .foregroundColor(team.isSelected && viewModel.isEditing ? Color(UIColor.systemBlue) : .gray)
                 }.disabled(!viewModel.isEditing)
             }.font(.title3)
         }.scrollContentBackground(.hidden)
