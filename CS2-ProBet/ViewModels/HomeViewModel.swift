@@ -21,9 +21,12 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var leaderboard: [Team] = []
 
     let maxTeamSelection = 3
+    let correctPredictionPoints = 15
+    let wrongPredictionPoints = -5
     
     init() {
         score = UserDefaults.standard.integer(forKey: "score")
+        loadLeaderboard()
         updateLeaderboard()
     }
 
@@ -35,11 +38,7 @@ class HomeViewModel: ObservableObject {
             leaderboard[index].isSelected.toggle()
         }
     }
-    
-    private func getSelectedTeams() -> [Team] {
-        return leaderboard.filter { $0.isSelected }
-    }
-    
+
     func editSelection() {
         isEditing = true
     }
@@ -49,7 +48,11 @@ class HomeViewModel: ObservableObject {
         saveLeaderboard()
     }
     
-    func saveLeaderboard() {
+    private func getSelectedTeams() -> [Team] {
+        return leaderboard.filter { $0.isSelected }
+    }
+    
+    private func saveLeaderboard() {
         do {
             let data = try JSONEncoder().encode(leaderboard)
             let url = getDocumentsDirectory().appendingPathComponent("leaderboard.json")
@@ -59,21 +62,53 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    func loadLeaderboard() {
+    private func loadLeaderboard() {
+        leaderboard = getSavedLeaderboard() ?? []
+    }
+    
+    private func getSavedLeaderboard() -> [Team]? {
         let url = getDocumentsDirectory().appendingPathComponent("leaderboard.json")
         do {
             let data = try Data(contentsOf: url)
-            leaderboard = try JSONDecoder().decode([Team].self, from: data)
+            return try JSONDecoder().decode([Team].self, from: data)
         } catch {
-            print("Unable to load leaderboard: \(error)")
+            print("Unable to get leaderboard: \(error)")
+            return nil
         }
     }
     
-    func updateLeaderboard() {
+    private func updateLeaderboard() {
         Task {
             let fetchedLeaderboard = await NetworkManager().fetchLeaderboard()
+            
             DispatchQueue.main.async {
-                self.leaderboard = fetchedLeaderboard ?? []
+                if fetchedLeaderboard == nil {
+                    // TODO: Provide feedback on error
+                    return
+                }
+                
+                if !self.compareLeaderboard(with: fetchedLeaderboard!) {
+                    self.updateScore(with: fetchedLeaderboard!)
+                    self.leaderboard = fetchedLeaderboard!
+                    self.saveLeaderboard()
+                }
+            }
+        }
+    }
+
+    private func compareLeaderboard(with data: [Team]) -> Bool {
+        return data == getSavedLeaderboard()
+    }
+    
+    private func updateScore(with data: [Team]) {
+        getSavedLeaderboard()?.filter{ $0.isSelected }.forEach { team in
+            if !data.map({$0.id}).contains(team.id) {
+                score += (data.count - team.place + 1) * wrongPredictionPoints
+            } else {
+                let teamChange = data.first(where: { $0.id == team.id })!.change
+                score +=  teamChange >= 0
+                    ? teamChange * correctPredictionPoints
+                    : abs(teamChange) * wrongPredictionPoints
             }
         }
     }
