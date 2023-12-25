@@ -11,6 +11,8 @@
 		755C42752B3108F400AA8B36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C42742B3108F400AA8B36 /* ContentView.swift */; };
 		75BA92562B23D8D5008AC3DB /* CS2-ProBetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA92552B23D8D5008AC3DB /* CS2-ProBetApp.swift */; };
 		75BA92582B23DBAE008AC3DB /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA92572B23DBAE008AC3DB /* LeaderboardView.swift */; };
+		75E2679A2B39DB83001E6121 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E267992B39DB83001E6121 /* NetworkManager.swift */; };
+		75E2679C2B39F3AB001E6121 /* TeamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2679B2B39F3AB001E6121 /* TeamResponse.swift */; };
 		75F26EAD2B23D170001A4DD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F26EAC2B23D170001A4DD4 /* Assets.xcassets */; };
 		75F26EB02B23D170001A4DD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F26EAF2B23D170001A4DD4 /* Preview Assets.xcassets */; };
 		75F26EBB2B23D384001A4DD4 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F26EBA2B23D384001A4DD4 /* Team.swift */; };
@@ -23,6 +25,8 @@
 		755C42742B3108F400AA8B36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		75BA92552B23D8D5008AC3DB /* CS2-ProBetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CS2-ProBetApp.swift"; sourceTree = "<group>"; };
 		75BA92572B23DBAE008AC3DB /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		75E267992B39DB83001E6121 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		75E2679B2B39F3AB001E6121 /* TeamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamResponse.swift; sourceTree = "<group>"; };
 		75F26EA52B23D16F001A4DD4 /* CS2-ProBet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS2-ProBet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F26EAC2B23D170001A4DD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75F26EAF2B23D170001A4DD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -42,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75E267982B39DB70001E6121 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				75E267992B39DB83001E6121 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		75F26E9C2B23D16F001A4DD4 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +73,7 @@
 		75F26EA72B23D16F001A4DD4 /* CS2-ProBet */ = {
 			isa = PBXGroup;
 			children = (
+				75E267982B39DB70001E6121 /* Managers */,
 				75F26EB92B23D350001A4DD4 /* Models */,
 				75F26EB82B23D349001A4DD4 /* ViewModels */,
 				75F26EB72B23D341001A4DD4 /* Views */,
@@ -102,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				75F26EBA2B23D384001A4DD4 /* Team.swift */,
+				75E2679B2B39F3AB001E6121 /* TeamResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,8 +193,10 @@
 			files = (
 				75BA92582B23DBAE008AC3DB /* LeaderboardView.swift in Sources */,
 				75BA92562B23D8D5008AC3DB /* CS2-ProBetApp.swift in Sources */,
+				75E2679C2B39F3AB001E6121 /* TeamResponse.swift in Sources */,
 				755C42752B3108F400AA8B36 /* ContentView.swift in Sources */,
 				75F26EBB2B23D384001A4DD4 /* Team.swift in Sources */,
+				75E2679A2B39DB83001E6121 /* NetworkManager.swift in Sources */,
 				75F26EC12B23D425001A4DD4 /* HomeViewModel.swift in Sources */,
 				755C42732B31013E00AA8B36 /* AboutView.swift in Sources */,
 				75F26EBE2B23D3D8001A4DD4 /* HomeView.swift in Sources */,
