@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MemorizeApp: App {
+struct CS2ProBetApp: App {
 
     var body: some Scene {
         WindowGroup {
