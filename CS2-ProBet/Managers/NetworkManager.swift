@@ -11,16 +11,16 @@ final class NetworkManager {
     
     let baseUrl = "http://localhost:3000"
     
-    func fetchLeaderboard() async -> [Team]? {
+    func fetchLeaderboard() async -> Result<[Team], Error> {
         let url = URL(string: baseUrl + "/leaderboard")!
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
 
-            return decodeTeamResponse(from: data)
+            return .success(decodeTeamResponse(from: data) ?? [])
         } catch {
             print("Error while fetching leaderboard: \(error)")
-            return nil
+            return .failure(error)
         }
     }
     

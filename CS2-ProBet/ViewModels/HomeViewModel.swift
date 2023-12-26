@@ -19,6 +19,8 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var isEditing: Bool = false
     
     @Published private(set) var leaderboard: [Team] = []
+    
+    @Published var fetchError: String?
 
     let maxTeamSelection = 3
     let correctPredictionPoints = 15
@@ -48,6 +50,25 @@ class HomeViewModel: ObservableObject {
         saveLeaderboard()
     }
     
+    func updateLeaderboard() {
+        Task {
+            let result = await NetworkManager().fetchLeaderboard()
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let fetchedLeaderboard):
+                    if !self.compareLeaderboard(with: fetchedLeaderboard) {
+                        self.updateScore(with: fetchedLeaderboard)
+                        self.leaderboard = fetchedLeaderboard
+                        self.saveLeaderboard()
+                    }
+                case .failure(let error):
+                    self.fetchError = error.localizedDescription
+                }
+            }
+        }
+    }
+    
     private func getSelectedTeams() -> [Team] {
         return leaderboard.filter { $0.isSelected }
     }
@@ -72,27 +93,7 @@ class HomeViewModel: ObservableObject {
             let data = try Data(contentsOf: url)
             return try JSONDecoder().decode([Team].self, from: data)
         } catch {
-            print("Unable to get leaderboard: \(error)")
             return nil
-        }
-    }
-    
-    private func updateLeaderboard() {
-        Task {
-            let fetchedLeaderboard = await NetworkManager().fetchLeaderboard()
-            
-            DispatchQueue.main.async {
-                if fetchedLeaderboard == nil {
-                    // TODO: Provide feedback on error
-                    return
-                }
-                
-                if !self.compareLeaderboard(with: fetchedLeaderboard!) {
-                    self.updateScore(with: fetchedLeaderboard!)
-                    self.leaderboard = fetchedLeaderboard!
-                    self.saveLeaderboard()
-                }
-            }
         }
     }
 

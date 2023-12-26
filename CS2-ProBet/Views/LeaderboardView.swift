@@ -32,7 +32,28 @@ struct LeaderboardView: View {
                         .foregroundColor(team.isSelected && viewModel.isEditing ? Color(UIColor.systemBlue) : .gray)
                 }.disabled(!viewModel.isEditing)
             }.font(.title3)
-        }.scrollContentBackground(.hidden)
+        }
+        .scrollContentBackground(.hidden)
+        .alert(
+            "Error fetching leaderboard",
+            isPresented: Binding<Bool>(get: {
+                self.viewModel.fetchError != nil
+            }, set: { _ in
+                self.viewModel.fetchError = nil
+            }),
+            presenting: viewModel.fetchError,
+            actions: { error in
+                Button("Retry", role: .cancel) {
+                    viewModel.updateLeaderboard()
+                }
+                Button("Quit", role: .destructive) {
+                    exit(EXIT_FAILURE)
+                }
+            },
+            message: { error in
+                Text(error)
+            }
+        )
     }
 }
 
