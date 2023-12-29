@@ -15,6 +15,12 @@ class HomeViewModel: ObservableObject {
             UserDefaults.standard.set(score, forKey: "score")
         }
     }
+    
+    @Published private(set) var scoreEvolution: Int {
+        didSet {
+            UserDefaults.standard.set(scoreEvolution, forKey: "scoreEvolution")
+        }
+    }
 
     @Published private(set) var isEditing: Bool = false
     
@@ -28,6 +34,7 @@ class HomeViewModel: ObservableObject {
     
     init() {
         score = UserDefaults.standard.integer(forKey: "score")
+        scoreEvolution = UserDefaults.standard.integer(forKey: "scoreEvolution")
         loadLeaderboard()
         updateLeaderboard()
     }
@@ -102,15 +109,17 @@ class HomeViewModel: ObservableObject {
     }
     
     private func updateScore(with data: [Team]) {
+        scoreEvolution = 0
         getSavedLeaderboard()?.filter{ $0.isSelected }.forEach { team in
             if !data.map({$0.id}).contains(team.id) {
-                score += (data.count - team.place + 1) * wrongPredictionPoints
+                scoreEvolution += (data.count - team.place + 1) * wrongPredictionPoints
             } else {
                 let teamChange = data.first(where: { $0.id == team.id })!.change
-                score +=  teamChange >= 0
+                scoreEvolution += teamChange >= 0
                     ? teamChange * correctPredictionPoints
                     : abs(teamChange) * wrongPredictionPoints
             }
+            score += scoreEvolution
         }
     }
 

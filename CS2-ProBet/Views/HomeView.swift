@@ -18,6 +18,11 @@ struct HomeView: View {
                 .fontWeight(.bold)
                 .foregroundColor(Color("BlazeOrange"))
             
+            Text("\(formatScoreEvolution(viewModel.scoreEvolution)) points this week")
+                .padding(.top, -16)
+                .font(.title3)
+                .foregroundColor(.white)
+            
             LeaderboardView(viewModel: viewModel)
             
             Spacer(minLength: 32)
@@ -44,6 +49,14 @@ struct HomeView: View {
             
             Spacer(minLength: 32)
         }.background(Color("PeacockBlue"))
+    }
+}
+
+func formatScoreEvolution(_ value: Int) -> String {
+    if value >= 0 {
+        return "+\(value)"
+    } else {
+        return String(value)
     }
 }
 
