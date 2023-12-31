@@ -9,7 +9,7 @@ import Foundation
 
 final class NetworkManager {
     
-    let baseUrl = "http://localhost:3000"
+    let baseUrl = "https://hltv-leaderboard-fetcher-830d3fdbc2b1.herokuapp.com"
     
     func fetchLeaderboard() async -> Result<[Team], Error> {
         let url = URL(string: baseUrl + "/leaderboard")!
