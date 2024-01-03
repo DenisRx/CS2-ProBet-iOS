@@ -24,6 +24,7 @@ struct ContentView: View {
                         Text("About")
                     }
             }
+            .background(Color("PeacockBlue"))
             .toolbarBackground(.visible, for: .tabBar)
         }
     }

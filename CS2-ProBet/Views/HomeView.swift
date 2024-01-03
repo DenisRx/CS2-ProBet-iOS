@@ -48,7 +48,7 @@ struct HomeView: View {
             }
             
             Spacer(minLength: 32)
-        }.background(Color("PeacockBlue"))
+        }
     }
 }
 
