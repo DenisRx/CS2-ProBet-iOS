@@ -119,8 +119,8 @@ class HomeViewModel: ObservableObject {
                     ? teamChange * correctPredictionPoints
                     : abs(teamChange) * wrongPredictionPoints
             }
-            score += scoreEvolution
         }
+        score += scoreEvolution
     }
 
     private func getDocumentsDirectory() -> URL {
