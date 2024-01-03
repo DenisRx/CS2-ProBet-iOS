@@ -24,7 +24,7 @@ struct AboutView: View {
                 Spacer()
 
                 LazyVStack {
-                    Text("This is CS2-ProBet, a game where you can bet on professional Counter-Strike2 teams ranking.\n\nEach week, you can select at most 3 teams, and when the world ranking updates, you win points whether your selected teams goes up or scoreboard.\n\nThe update usally takes place on Monday evening. Throughout the week, you are free to change your picks as much as you want.")
+                    Text("This is CS2-ProBet, a game where you can bet on professional Counter-Strike2 teams ranking.\n\nEach week, you can select at most 3 teams, and when the world ranking updates, you win points whether your selected teams go up on the scoreboard.\n\nThe update usually takes place on Monday evening. Throughout the week, you are free to change your picks as much as you want.")
                 }
 
                 Spacer()
